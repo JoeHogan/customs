@@ -1,0 +1,43 @@
+<!-- public/views/home.html -->
+
+<div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default documents-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3 class="panel-title">Documents</h3>
+                    </div>
+                    <div class="panel-tools">
+                        <input type="text" ng-model="search.text" placeholder="Search Documents...">
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="document" ng-repeat="doc in home.documents | filter:search.text track by $index">
+                        <div class="title">
+                            <span class="glyphicon glyphicon-file"></span>
+                            <span ng-bind="doc._id"></span>
+                        </div>
+                        <ul class="info">
+                            <div ng-bind="doc.applicationDate | date:'mediumDate'"></div>
+                        </ul>
+                        <div class="actions">
+                            <button type="button" class="btn btn-warning" edit-item="doc" items="home.documents">Edit</button>
+                            <button type="button" class="btn btn-danger" delete-item="doc" items="home.documents">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default actions-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Actions</h3>
+                </div>
+                <div class="panel-body">
+                    <button type="button" class="btn btn-success" create-item items="home.documents">New Document</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
